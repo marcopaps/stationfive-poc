@@ -36,3 +36,13 @@ export default {
     205: [304],
   },
 };
+
+/**
+ * Ideally in the real world apps/APIs, there should be consistency when it comes to data types
+ *
+ * For example here:
+ * Initially in menus array, "id" is of type string
+ * but in the rules object, these "id"s are of type number
+ *
+ * If this part of the test, I just want to point that out also
+ */
