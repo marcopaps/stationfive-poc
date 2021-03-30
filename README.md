@@ -31,3 +31,7 @@
 ### Limitations / Things not implemented
 
 - Component automated testing
+
+### Sample look
+
+![stationfive-poc](https://user-images.githubusercontent.com/36555546/112939608-5c836380-915e-11eb-9f02-2c6f92f3dc1c.gif)
