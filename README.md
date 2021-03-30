@@ -2,6 +2,8 @@
 
 ---
 
+`$ npm install`
+
 `$ npm run start`
 
 ### Technologies used
