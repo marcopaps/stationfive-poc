@@ -36,18 +36,34 @@ function MenuContainer(props: PropsType) {
     return numberIds.map((id: number) => String(id));
   };
 
+  const getMenuState = (menuId: number) => {
+    return state.find((item) => item.menuId === String(menuId));
+  };
+
   const onSelectMenuItem = (menuId: string, selectedItemId: string) => {
     const incompatibleItems = getAPIIncompatibleItems(selectedItemId);
-    const incompatibleSelectedItems = state.filter((stateItem) => {
+    const incompatibleMenus = state.filter((stateItem) => {
       return incompatibleItems.includes(stateItem.selectedItemId);
     });
 
-    incompatibleSelectedItems?.map((item) => {
-      return dispatch({
-        type: ActionKindEnum.Update,
-        payload: { menuId: item.menuId, selectedItemId: '' },
+    const incompatibleMenuIds = incompatibleMenus?.map((menu) => +menu.menuId);
+
+    if (incompatibleMenuIds.length > 0) {
+      const lowestId = Math.min(...incompatibleMenuIds);
+
+      let menusToDisable: number[] = [];
+
+      for (let i = lowestId; i <= menus.length; i += 1) {
+        menusToDisable = [...menusToDisable, i];
+      }
+
+      menusToDisable.map((id) => {
+        return dispatch({
+          type: ActionKindEnum.Update,
+          payload: { menuId: String(id), selectedItemId: '' },
+        });
       });
-    });
+    }
 
     dispatch({
       type: ActionKindEnum.Update,
@@ -55,19 +71,15 @@ function MenuContainer(props: PropsType) {
     });
   };
 
-  const getMenuState = (menuId: number) => {
-    return state.find((item) => item.menuId === String(menuId));
-  };
-
   const renderMenus = () => {
     return menus.map((menu) => {
       const id = menus.indexOf(menu);
 
       const currentMenuState = getMenuState(id);
-      const parentState = getMenuState(id - 1);
+      const parentMenuState = getMenuState(id - 1);
 
       const selectedItemId = currentMenuState?.selectedItemId;
-      const isMenuDisabled = !parentState && id !== 0;
+      const isMenuDisabled = !parentMenuState?.selectedItemId && id !== 0;
 
       const disabledItems = state.map((stateMenu) => {
         return getAPIIncompatibleItems(stateMenu.selectedItemId);
