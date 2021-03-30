@@ -34,4 +34,4 @@
 
 ### Sample look
 
-![stationfive-poc](https://user-images.githubusercontent.com/36555546/112939608-5c836380-915e-11eb-9f02-2c6f92f3dc1c.gif)
+![stationfive-poc-2](https://user-images.githubusercontent.com/36555546/112945307-b38d3680-9166-11eb-9b06-ceea394d4df2.gif)
