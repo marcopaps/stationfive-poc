@@ -3,5 +3,5 @@ import styled from 'styled-components';
 
 export default styled(Button)`
   width: 100%;
-  margin: 25% 32px 32px 32px;
+  margin: 52px 32px 32px 32px;
 `;
