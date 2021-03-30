@@ -17,6 +17,7 @@ type PropsType = {
 
 function MenuContainer(props: PropsType) {
   const { menus, rules } = props;
+
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(true);
   const [state, dispatch] = useReducer(reducer, []);
 
@@ -31,7 +32,7 @@ function MenuContainer(props: PropsType) {
   }, [menus.length, state]);
 
   const getAPIIncompatibleItems = (menuId: string) => {
-    const numberIds: number[] = rules[+menuId] || [];
+    const numberIds: number[] = rules[+menuId] || []; // shorthand for converting e.g "100" - 100
     return numberIds.map((id: number) => String(id));
   };
 

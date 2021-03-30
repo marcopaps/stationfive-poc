@@ -7,7 +7,6 @@ import { MenuItem } from '../types';
 type PropsType = {
   menuId: string;
   menuItems: MenuItem[];
-  // eslint-disable-next-line react/require-default-props
   selectedItemId?: string;
   isMenuDisabled: boolean;
   disabledItems: string[];

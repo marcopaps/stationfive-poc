@@ -6,5 +6,6 @@ module.exports = {
         "prettier/prettier": ["error", {
            "endOfLine": "auto"
          }],
+         "react/require-default-props": "off"
     },
 };
